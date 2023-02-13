@@ -35,7 +35,30 @@ function orderAlphabetically(movies) {
 }
 
 // Exercise 5: Order by year, ascending
-function orderByYear() {
+function orderByYear(movies) {
+
+  const titleYearMovies = movies.map(element => {               // .map() genera un nuevo array, sort() lo modifica
+    return { title: element.title, year: element.year };
+  });
+
+  const result5 = titleYearMovies.sort((a, b) => {
+    if (a.year < b.year) {
+      return -1;
+    }
+    if (a.year > b.year) {
+      return 1;
+    }                                                           // Si tienen mismo año (a.year === b.year) se ordena por title
+    if (a.title < b.title) {
+      return -1;
+    }
+    if (a.title > b.title) {
+      return 1;
+    }
+    return 0;
+  });
+
+  console.log("EXERCICE 5 ->", result5);
+  return result5;
 
 }
 
