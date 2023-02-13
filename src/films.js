@@ -63,8 +63,16 @@ function orderByYear(movies) {
 }
 
 // Exercise 6: Calculate the average of the movies in a category
-function moviesAverageByCategory() {
+function moviesAverageByCategory(movies, genre) {
 
+  const genreMovies = movies.filter(elem => elem.genre.includes(genre));
+  const scoresGenreMovies = genreMovies.map(element => element.score);
+  const wOutScoreMovies = scoresGenreMovies.filter(element => element === "" || null);                    // Filtra movies sin puntuación
+  const arrSumTotal = scoresGenreMovies.reduce((acc, currentValue) => Number(acc) + currentValue);        // Number() evita devolver string si hay movies sin puntuación
+  const result6 = Math.round((arrSumTotal / (genreMovies.length - wOutScoreMovies.length) * 100)) / 100;
+
+  console.log("EXERCICE 6 ->", result6);
+  return result6;
 }
 
 // Exercise 7: Modify the duration of movies to minutes
